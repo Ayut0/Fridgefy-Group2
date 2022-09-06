@@ -11,7 +11,7 @@ export default function MyRecipes() {
   return (
     <section>
         <div>
-            <h3>My recipes</h3>
+            <h3>My Recipes</h3>
         </div>
         <ul>
           {myRecipes.map((recipe)=><UserRecipe  id={recipe.id} name={recipe.title}/>)}

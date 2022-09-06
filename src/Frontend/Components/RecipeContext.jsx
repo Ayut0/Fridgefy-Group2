@@ -5,10 +5,12 @@ import { dataBaseService } from '../../Backend/FirebaseUtils';
 export const RecipeContext = createContext();
 
 export function RecipeProvider({children}){
+
   const [recipes,setRecipe] = useState([])
   const[myRecipes,setMyRecipes] = useState([])
   const [ingredients, setIngredients] = useState('')
   const [myIngredients, setMyIngredients] = useState([])
+
 
   const addRecipe=(data)=>{
       const recipes = Promise.resolve(data)
@@ -26,9 +28,19 @@ export function RecipeProvider({children}){
     })
   }
 
-  const onTimeUpdate = (ref) => {
-    const updatedData = onSnapshot(ref, (QuerySnapshot) => {
-        setRecipe(
+
+  // const addModal=(summary)=>{
+  //   const sum=Promise.resolve(summary)
+  //     sum.then(value=>{
+  //       setRecipeModal(value)
+  //     }).catch(err=>{
+  //       console.log(err)
+  //     })
+  // }
+
+  const onTimeUpdate = (ref) =>{
+    const updatedData = onSnapshot(ref, (QuerySnapshot)=>{
+        setMyRecipes(
             QuerySnapshot.docs.map((doc) => ({
                 ...doc.data(),
             }))
@@ -45,7 +57,9 @@ export function RecipeProvider({children}){
 
   return(
     <RecipeContext.Provider value={{
+
       recipes:recipes, addRecipe, myRecipes:myRecipes, getMyRecipes, onTimeUpdate, ingredients:ingredients, setIngredients, getMyIngredients, myIngredients:myIngredients, setMyIngredients
+
     }}>
         {children}
     </RecipeContext.Provider>

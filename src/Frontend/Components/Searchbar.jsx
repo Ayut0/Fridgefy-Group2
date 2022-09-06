@@ -2,6 +2,9 @@ import React,{ useState,useRef,useEffect} from 'react'
 import {getRecipeDataViaKeyword} from '../../Backend/FetchRecipes';
 import { RecipeContext } from "./RecipeContext";
 import { useContext } from "react";
+import { StyledSearch } from "./Styles/Searchbar.styles";
+
+
 import SingleRecipe from './Card';
 import axios from 'axios';
 
@@ -38,9 +41,21 @@ export default function Searchbar() {
         addRecipe(getRecipeDataViaKeyword(search,cuisine,diet,intolerance,option))
     }
   return (
+    
     <>
+
+    <StyledSearch>
+
     <form onSubmit={searchHandler}>
+    <div className='search'>
+
+      
       <input ref={searchInput} type="text" />
+      <button>Search</button>
+      </div>
+
+
+      <div>
       <select onChange={handleNumber} name="numbers" id="">
         <option value="5">5</option>
         <option value="10">10</option>
@@ -72,8 +87,12 @@ export default function Searchbar() {
         <option value="grain">Grain</option>
         <option value="sesame">Sesame</option>
       </select>
-      <button>Search</button>
+      </div>
+
     </form>
+
+    </StyledSearch>
+  
     {recipes.map((recipe)=>(<SingleRecipe recipe={recipe} key={recipe.id} />))}
     </>
   )

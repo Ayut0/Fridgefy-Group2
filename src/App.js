@@ -6,10 +6,12 @@ import SignIn from './Frontend/User/SignIn';
 import { LandingPage } from './Frontend/Components/LandingPage'
 import ProtectRoute from './Frontend/User/ProtectRoute';
 import { Navbar } from './Frontend/Components/NavBar';
+import { GlobalStyles } from './Frontend/Components/Styles/GlobalStyles';
 
 function App() {
   return (
     <div className="App">
+     <GlobalStyles />
       <AuthProvider>
         <BrowserRouter>
         <Navbar />

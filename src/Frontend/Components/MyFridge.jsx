@@ -33,10 +33,10 @@ export const MyFridge = () => {
 
   return (
     <>
-        <h3>MyFridge</h3>
+        <h3>My Fridge</h3>
         <form onSubmit={submitHandler}>
             <input type="text" placeholder='search ingredients' ref={searchRef} />
-            <input type="submit" value="add" />
+            <input type="submit" value="Add" />
         </form>
         <FridgeContents />
     </>
